@@ -1,8 +1,11 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Link from "next/link";
 import useSWR from "swr";
+
+const queryClient = new QueryClient();
 
 export default function CondominiosPage() {
   const { data, isLoading } = useSWR("/api/condominios", async (url) => {
@@ -10,8 +13,6 @@ export default function CondominiosPage() {
 
     return await response.json();
   });
-
-  console.log(data);
 
   return (
     <main>

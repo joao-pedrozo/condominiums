@@ -15,18 +15,35 @@ import Link from "next/link";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
 
 const formSchema = z.object({
   nome: z.string(),
   endereco: z.string(),
   cnpj: z.string(),
-  quantidadeUnidades: z
-    .number()
-    .int()
-    .positive("A quantidade de unidades deve ser um número positivo"),
+  quantidadeUnidades: z.number().int(),
 });
 
 export default function AddCondominioPage() {
+  const { mutate, isPending, isError, isSuccess } = useMutation({
+    mutationFn: (condominio: z.infer<typeof formSchema>) => {
+      return fetch("/api/condominios", {
+        method: "POST",
+        body: JSON.stringify(condominio),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    },
+    onSuccess: () => {
+      alert("Condomínio adicionado com sucesso!");
+    },
+    onError: (err) => {
+      alert("Ocorreu um erro ao adicionar o condomínio.");
+      console.error(err);
+    },
+  });
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -39,9 +56,13 @@ export default function AddCondominioPage() {
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     console.log(values);
+
+    if (isPending) {
+      return;
+    }
+
+    mutate(values);
   }
 
   return (
@@ -67,7 +88,7 @@ export default function AddCondominioPage() {
               <FormItem>
                 <FormLabel>Nome</FormLabel>
                 <FormControl>
-                  <Input placeholder="shadcn" {...field} />
+                  <Input placeholder="Condominio Village" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -80,7 +101,10 @@ export default function AddCondominioPage() {
               <FormItem>
                 <FormLabel>Endereço</FormLabel>
                 <FormControl>
-                  <Input placeholder="shadcn" {...field} />
+                  <Input
+                    placeholder="Av. Presidente Antonio Carlos"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -93,7 +117,7 @@ export default function AddCondominioPage() {
               <FormItem>
                 <FormLabel>CNPJ</FormLabel>
                 <FormControl>
-                  <Input placeholder="shadcn" {...field} />
+                  <Input placeholder="921.274.283-32" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
