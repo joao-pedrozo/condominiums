@@ -1,4 +1,6 @@
 "use client";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import useSWR from "swr";
 
 export default function CondominiosPage() {
@@ -17,13 +19,20 @@ export default function CondominiosPage() {
         Aqui você pode gerenciar os condomínios cadastrados.
       </p>
 
+      <div className="flex justify-between mt-4">
+        <div>
+          <Input placeholder="Procure por id" />
+        </div>
+        <Button>Novo condomínio</Button>
+      </div>
+
       {isLoading ? (
         <p>Carregando...</p>
       ) : (
         <ul>
           {data.map((condominio) => (
-            <li key={condominio.id} className="border m-2 p-2 rounded-md">
-              <h3>Nome: {condominio.nome}</h3>
+            <li key={condominio.id} className="border mt-2 p-2 rounded-md">
+              <h3 className="font-bold mb-1">{condominio.nome}</h3>
               <p>Endereço: {condominio.endereco}</p>
               <p>CNPJ: {condominio.cnpj}</p>
               <p>No. Unidades: {condominio.quantidadeUnidades}</p>
