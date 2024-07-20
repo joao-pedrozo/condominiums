@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const SideMenu: React.FC = () => {
@@ -8,14 +9,14 @@ const SideMenu: React.FC = () => {
           <h1 className="font-bold text-2xl">Gestão Condomínios</h1>
         </li>
         <li className="pt-1 pb-3 border-b border-gray-700">
-          <a href="#" className="">
+          <Link href="/" className="">
             Dashboard
-          </a>
+          </Link>
         </li>
         <li className="py-3 border-b border-gray-700">
-          <a href="#" className="">
+          <Link href="/condominios" className="">
             Condomínios
-          </a>
+          </Link>
         </li>
       </ul>
     </div>
