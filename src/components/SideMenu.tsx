@@ -2,26 +2,19 @@ import React from "react";
 
 const SideMenu: React.FC = () => {
   return (
-    <div className="border text-white w-64 min-h-screen">
+    <div className="border w-fit px-4 min-h-screen">
       <ul className="">
-        <li className="px-6 py-3 border-b border-gray-700">
-          <a href="#" className="text-black hover:text-white">
-            Home
+        <li className="mt-2">
+          <h1 className="font-bold text-2xl">Gestão Condomínios</h1>
+        </li>
+        <li className="pt-1 pb-3 border-b border-gray-700">
+          <a href="#" className="">
+            Dashboard
           </a>
         </li>
-        <li className="px-6 py-3 border-b border-gray-700">
-          <a href="#" className="text-black hover:text-white">
-            About
-          </a>
-        </li>
-        <li className="px-6 py-3 border-b border-gray-700">
-          <a href="#" className="text-black hover:text-white">
-            Services
-          </a>
-        </li>
-        <li className="px-6 py-3 border-b border-gray-700">
-          <a href="#" className="text-black hover:text-white">
-            Contact
+        <li className="py-3 border-b border-gray-700">
+          <a href="#" className="">
+            Condomínios
           </a>
         </li>
       </ul>
