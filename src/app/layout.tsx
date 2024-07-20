@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import SideMenu from "@/components/SideMenu";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
         <QueryClientProvider client={queryClient}>
           <SideMenu />
           <div className="mt-2">{children}</div>
+          <Toaster />
         </QueryClientProvider>
       </body>
     </html>

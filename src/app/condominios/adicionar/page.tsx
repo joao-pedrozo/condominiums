@@ -16,15 +16,20 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
+import { useToast } from "@/components/ui/use-toast";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   nome: z.string(),
   endereco: z.string(),
   cnpj: z.string(),
-  quantidadeUnidades: z.number().int(),
+  quantidadeUnidades: z.string(),
 });
 
 export default function AddCondominioPage() {
+  const { toast } = useToast();
+  const router = useRouter();
+
   const { mutate, isPending, isError, isSuccess } = useMutation({
     mutationFn: (condominio: z.infer<typeof formSchema>) => {
       return fetch("/api/condominios", {
@@ -36,7 +41,12 @@ export default function AddCondominioPage() {
       });
     },
     onSuccess: () => {
-      alert("Condomínio adicionado com sucesso!");
+      toast({
+        title: "Condomínio adicionado com sucesso!",
+        description: "O condoínio foi adicionado com sucesso.",
+      });
+
+      router.push("/condominios");
     },
     onError: (err) => {
       alert("Ocorreu um erro ao adicionar o condomínio.");
@@ -62,7 +72,10 @@ export default function AddCondominioPage() {
       return;
     }
 
-    mutate(values);
+    mutate({
+      ...values,
+      quantidadeUnidades: Number(values.quantidadeUnidades),
+    });
   }
 
   return (
@@ -130,7 +143,7 @@ export default function AddCondominioPage() {
               <FormItem>
                 <FormLabel>Quantidade de unidades</FormLabel>
                 <FormControl>
-                  <Input placeholder="shadcn" type="number" {...field} />
+                  <Input {...field} type="number" />
                 </FormControl>
                 <FormMessage />
               </FormItem>

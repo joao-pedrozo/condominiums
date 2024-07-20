@@ -37,6 +37,7 @@ export default function CondominiosPage() {
           {data.map((condominio) => (
             <li key={condominio.id} className="border mt-2 p-2 rounded-md">
               <h3 className="font-bold mb-1">{condominio.nome}</h3>
+              <p>ID: {condominio.id}</p>
               <p>Endereço: {condominio.endereco}</p>
               <p>CNPJ: {condominio.cnpj}</p>
               <p>No. Unidades: {condominio.quantidadeUnidades}</p>
