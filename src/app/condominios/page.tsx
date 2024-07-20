@@ -54,6 +54,10 @@ export default function CondominiosPage() {
                   minute: "numeric",
                 }).format(new Date(condominio.inicioAdministracao))}
               </p>
+              <div className="flex gap-2 mt-2">
+                <Button className="w-full">Editar</Button>
+                <Button className="w-full">Excluir</Button>
+              </div>
             </li>
           ))}
         </ul>
