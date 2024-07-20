@@ -19,7 +19,8 @@ export default function RootLayout({
     <html lang="en">
       {/* TODO: Create template */}
       <body className={`${inter.className} flex`}>
-        <SideMenu /> {children}
+        <SideMenu />
+        <div className="mt-2">{children}</div>
       </body>
     </html>
   );

@@ -3,7 +3,7 @@ import React from "react";
 
 const SideMenu: React.FC = () => {
   return (
-    <div className="border w-fit px-4 min-h-screen">
+    <div className="border mr-2 w-fit px-4 min-h-screen">
       <ul className="">
         <li className="mt-2">
           <h1 className="font-bold text-2xl">Gestão Condomínios</h1>
