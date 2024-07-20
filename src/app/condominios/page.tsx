@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import Link from "next/link";
 import useSWR from "swr";
 
 export default function CondominiosPage() {
@@ -23,7 +24,9 @@ export default function CondominiosPage() {
         <div>
           <Input placeholder="Procure por id" />
         </div>
-        <Button>Novo condomínio</Button>
+        <Button>
+          <Link href="/condominios/adicionar">Adicionar</Link>
+        </Button>
       </div>
 
       {isLoading ? (
