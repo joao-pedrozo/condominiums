@@ -1,7 +1,15 @@
+function getAPIUrl() {
+  if (!process.env.API_URL) {
+    throw new Error("API_URL is not defined.");
+  }
+
+  return process.env.API_URL;
+}
+
+const API_URL = getAPIUrl();
+
 export async function GET() {
-  const data = await fetch(
-    "https://administradora-digital-run1-mfrrjeldtq-uc.a.run.app/api/Condominios"
-  );
+  const data = await fetch(API_URL);
 
   const dataJson = await data.json();
 
@@ -11,16 +19,13 @@ export async function GET() {
 export async function POST(request: Request) {
   const body = await request.json();
 
-  const response = await fetch(
-    "https://administradora-digital-run1-mfrrjeldtq-uc.a.run.app/api/Condominios",
-    {
-      method: "POST",
-      body: JSON.stringify(body),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  const response = await fetch(API_URL, {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
   const responseJson = await response.json();
 
@@ -31,16 +36,13 @@ export async function PUT(request: Request) {
   const body = await request.json();
 
   try {
-    const response = await fetch(
-      `https://administradora-digital-run1-mfrrjeldtq-uc.a.run.app/api/Condominios/${body.id}`,
-      {
-        method: "PUT",
-        body: JSON.stringify(body),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${API_URL}/${body.id}`, {
+      method: "PUT",
+      body: JSON.stringify(body),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     if (response.status === 204) {
       return Response.json({ message: "Condomínio editado com sucesso!" });
@@ -62,15 +64,12 @@ export async function DELETE(request: Request) {
   const { id } = await request.json();
 
   try {
-    const response = await fetch(
-      `https://administradora-digital-run1-mfrrjeldtq-uc.a.run.app/api/Condominios/${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     if (response.status === 204) {
       return Response.json({ message: "Condomínio deletado com sucesso!" });
