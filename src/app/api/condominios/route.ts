@@ -5,8 +5,6 @@ export async function GET() {
 
   const dataJson = await data.json();
 
-  console.log(dataJson);
-
   return Response.json(dataJson);
 }
 
@@ -27,4 +25,34 @@ export async function POST(request: Request) {
   const responseJson = await response.json();
 
   return Response.json(responseJson);
+}
+
+export async function DELETE(request: Request) {
+  const { id } = await request.json();
+
+  try {
+    const response = await fetch(
+      `https://administradora-digital-run1-mfrrjeldtq-uc.a.run.app/api/Condominios/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (response.status === 204) {
+      return Response.json({ message: "Condomínio deletado com sucesso!" });
+    }
+
+    return Response.json(
+      { message: "Erro ao deletar condomínio." },
+      { status: 400 }
+    );
+  } catch (error) {
+    return Response.json(
+      { message: "Erro ao deletar condomínio." },
+      { status: 500 }
+    );
+  }
 }

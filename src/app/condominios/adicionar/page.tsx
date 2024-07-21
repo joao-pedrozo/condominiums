@@ -64,10 +64,7 @@ export default function AddCondominioPage() {
     },
   });
 
-  // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-
     if (isPending) {
       return;
     }
