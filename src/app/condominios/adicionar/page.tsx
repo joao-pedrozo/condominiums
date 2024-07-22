@@ -60,7 +60,7 @@ export default function AddCondominioPage() {
       nome: "",
       endereco: "",
       cnpj: "",
-      quantidadeUnidades: 0,
+      quantidadeUnidades: "0",
     },
   });
 
@@ -69,10 +69,7 @@ export default function AddCondominioPage() {
       return;
     }
 
-    mutate({
-      ...values,
-      quantidadeUnidades: Number(values.quantidadeUnidades),
-    });
+    mutate(values);
   }
 
   return (
