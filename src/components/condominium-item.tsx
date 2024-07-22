@@ -23,6 +23,10 @@ export default function CondominiumItem({
     "quantidadeUnidades",
     condominium.quantidadeUnidades.toString()
   );
+  searchParams.set(
+    "inicioAdministracao",
+    new Date(condominium.inicioAdministracao).toISOString()
+  );
   const editUrl = `/condominios/editar?${searchParams.toString()}`;
 
   return (
