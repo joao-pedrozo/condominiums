@@ -13,13 +13,13 @@ import { Button } from "@/components/ui/button";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/components/ui/use-toast";
 
-interface CondominioDeleteDialogProps {
+interface CondominiumDeleteDialogProps {
   condominiumId: number;
 }
 
-export default function CondominioDeleteDialog({
+export default function CondominiumDeleteDialog({
   condominiumId,
-}: CondominioDeleteDialogProps) {
+}: CondominiumDeleteDialogProps) {
   const queryClient = useQueryClient();
   const { toast } = useToast();
 

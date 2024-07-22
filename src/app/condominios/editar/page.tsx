@@ -26,7 +26,7 @@ const formSchema = z.object({
   quantidadeUnidades: z.string(),
 });
 
-export default function EditCondominioPage() {
+export default function EditCondominiumPage() {
   const { toast } = useToast();
   const router = useRouter();
 

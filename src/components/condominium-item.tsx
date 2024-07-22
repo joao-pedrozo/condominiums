@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import CondominioDeleteDialog from "@/components/condominium-delete-dialog";
+import CondominiumDeleteDialog from "@/components/condominium-delete-dialog";
 import type { Condominium } from "@/types";
 
 interface CondominiumItemProps extends React.HTMLAttributes<HTMLLIElement> {
@@ -38,15 +38,13 @@ export default function CondominiumItem({
           year: "numeric",
           month: "long",
           day: "numeric",
-          hour: "numeric",
-          minute: "numeric",
         }).format(new Date(condominium.inicioAdministracao))}
       </p>
       <div className="flex gap-2 mt-2">
         <Button className="w-full" onClick={() => router.push(editUrl)}>
           Editar
         </Button>
-        <CondominioDeleteDialog condominiumId={condominium.id} />
+        <CondominiumDeleteDialog condominiumId={condominium.id} />
       </div>
     </li>
   );
