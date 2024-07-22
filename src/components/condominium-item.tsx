@@ -37,7 +37,7 @@ export default function CondominiumItem({
       <p>CNPJ: {condominium.cnpj}</p>
       <p>No. Unidades: {condominium.quantidadeUnidades}</p>
       <p>
-        Início administrativo:{" "}
+        Início Administrativo: {/* TODO: Criar utils */}
         {Intl.DateTimeFormat("pt-BR", {
           year: "numeric",
           month: "long",

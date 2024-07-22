@@ -4,7 +4,7 @@ import React from "react";
 
 const SideMenu: React.FC = () => {
   return (
-    <div className="border border-t-0 w-fit px-4 min-h-screen">
+    <div className="border border-t-0 flex flex-shrink-0 w-fit px-4 min-h-screen">
       <ul className="pt-4">
         <li>
           <h1 className="font-bold text-2xl flex gap-2 items-center">
