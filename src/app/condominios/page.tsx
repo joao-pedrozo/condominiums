@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
-import CondominioList from "@/components/condominium-list";
+import CondominiumList from "@/components/condominium-list";
 
-export default function CondominiosPage() {
-  const { data, isLoading } = useQuery({
+export default function CondominiumsPage() {
+  const { data: condominiums, isLoading } = useQuery({
     queryKey: ["condominios"],
     queryFn: async () => {
       const response = await fetch("/api/condominios");
@@ -24,14 +24,14 @@ export default function CondominiosPage() {
         <div>
           <Input placeholder="Procure por id" />
         </div>
-        <Button>
-          <Link href="/condominios/adicionar">Adicionar</Link>
-        </Button>
+        <Link href="/condominios/adicionar">
+          <Button>Adicionar</Button>
+        </Link>
       </div>
       {isLoading ? (
-        <p>Carregando...</p>
+        <p className="mt-2">Carregando condomínios...</p>
       ) : (
-        <CondominioList condominiums={data} />
+        <CondominiumList condominiums={condominiums} />
       )}
     </main>
   );

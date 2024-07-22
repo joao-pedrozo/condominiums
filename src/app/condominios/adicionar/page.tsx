@@ -4,12 +4,18 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { z } from "zod";
@@ -18,15 +24,19 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { CalendarIcon } from "lucide-react";
+import { format } from "date-fns";
 
 const formSchema = z.object({
   nome: z.string(),
   endereco: z.string(),
   cnpj: z.string(),
   quantidadeUnidades: z.string(),
+  inicioAdministracao: z.date(),
 });
 
-export default function AddCondominioPage() {
+export default function AddCondominiumPage() {
   const { toast } = useToast();
   const router = useRouter();
 
@@ -61,6 +71,7 @@ export default function AddCondominioPage() {
       endereco: "",
       cnpj: "",
       quantidadeUnidades: "0",
+      inicioAdministracao: new Date(),
     },
   });
 
@@ -143,7 +154,51 @@ export default function AddCondominioPage() {
               </FormItem>
             )}
           />
-          <Button type="submit">Adicionar condomínio</Button>
+          <FormField
+            control={form.control}
+            name="inicioAdministracao"
+            render={({ field }) => (
+              <FormItem className="flex flex-col">
+                <FormLabel>Início da Administração</FormLabel>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button
+                        variant={"outline"}
+                        className={cn(
+                          "w-[240px] pl-3 text-left font-normal",
+                          !field.value && "text-muted-foreground"
+                        )}
+                      >
+                        {field.value ? (
+                          format(field.value, "PPP")
+                        ) : (
+                          <span>Pick a date</span>
+                        )}
+                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={field.value}
+                      onSelect={field.onChange}
+                      disabled={(date) =>
+                        date > new Date() || date < new Date("1900-01-01")
+                      }
+                    />
+                  </PopoverContent>
+                </Popover>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <div className="col-span-2">
+            <Button className="w-full" type="submit">
+              Adicionar condomínio
+            </Button>
+          </div>
         </form>
       </Form>
     </main>
