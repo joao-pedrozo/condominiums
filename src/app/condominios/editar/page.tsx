@@ -1,3 +1,3 @@
-import EditCondominiumPage from "@/components/edit-condominium-page";
+import EditCondominiumPage from "@/components/pages/edit-condominium-page";
 
 export default EditCondominiumPage;
