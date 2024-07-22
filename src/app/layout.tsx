@@ -2,7 +2,7 @@
 
 import { Inter } from "next/font/google";
 import "./globals.css";
-import SideMenu from "@/components/SideMenu";
+import SideMenu from "@/components/side-menu";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 
