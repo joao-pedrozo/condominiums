@@ -30,7 +30,7 @@ export default function CondominiumItem({
   const editUrl = `/condominios/editar?${searchParams.toString()}`;
 
   return (
-    <li className={`border mt-2 p-2 rounded-md ${className}`} {...rest}>
+    <li className={`border p-2 rounded-md ${className}`} {...rest}>
       <h3 className="font-bold mb-1">{condominium.nome}</h3>
       <p>ID: {condominium.id}</p>
       <p>Endereço: {condominium.endereco}</p>
@@ -45,10 +45,16 @@ export default function CondominiumItem({
         }).format(new Date(condominium.inicioAdministracao))}
       </p>
       <div className="flex gap-2 mt-2">
-        <Button className="w-full" onClick={() => router.push(editUrl)}>
+        <CondominiumDeleteDialog condominiumId={condominium.id} />
+
+        {/* TODO: Componentizar  */}
+        <Button
+          variant="outline"
+          className="border-blue-600 text-blue-600 hover:bg-blue-50 hover:text-blue-600 w-full"
+          onClick={() => router.push(editUrl)}
+        >
           Editar
         </Button>
-        <CondominiumDeleteDialog condominiumId={condominium.id} />
       </div>
     </li>
   );

@@ -46,7 +46,12 @@ export default function CondominiumDeleteDialog({
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button className="w-full">Excluir</Button>
+        <Button
+          variant="outline"
+          className="w-full border-red-600 text-red-600 hover:bg-red-50 hover:text-red-600"
+        >
+          Excluir
+        </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>

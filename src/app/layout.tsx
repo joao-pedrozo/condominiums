@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className={`${inter.className} flex`}>
         <QueryClientProvider client={queryClient}>
           <SideMenu />
-          <div className="mt-4 pl-4">{children}</div>
+          <div className="mt-5 pl-5">{children}</div>
           <Toaster />
         </QueryClientProvider>
       </body>
