@@ -3,8 +3,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SideMenu from "@/components/side-menu";
-import { Toaster } from "@/components/ui/toaster";
 import TanstackProvider from "@/providers/TanstackProvider";
+import ToastProvider from "@/providers/ToastProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +20,7 @@ export default function RootLayout({
         <TanstackProvider>
           <SideMenu />
           <div className="mt-5 pl-5 w-full max-w-[720px]">{children}</div>
-          <Toaster />
+          <ToastProvider />
         </TanstackProvider>
       </body>
     </html>
