@@ -3,8 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Link from "next/link";
-import CondominiumList from "@/components/condominium-list";
+import CondominiumList from "./components/condominium-list";
 import { PlusIcon } from "lucide-react";
+import PageHeader from "../components/page-header";
 
 export default function CondominiumsPage() {
   const { data: condominiums, isLoading } = useQuery({
@@ -17,10 +18,10 @@ export default function CondominiumsPage() {
 
   return (
     <main>
-      <h2 className="font-bold text-3xl">Gestão de Condomínios</h2>
-      <p className="text-lg mt-1">
-        Aqui você pode gerenciar os condomínios cadastrados.
-      </p>
+      <PageHeader
+        title="Gestão de Condomínios"
+        description="Aqui você pode gerenciar os condomínios cadastrados."
+      />
       <div className="flex justify-between my-4">
         <div>
           <Input placeholder="Procure por id" />

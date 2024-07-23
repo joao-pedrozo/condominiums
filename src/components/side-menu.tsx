@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 
-const SideMenu: React.FC = () => {
+const SideMenu = () => {
   return (
     <div className="border border-t-0 flex flex-shrink-0 w-fit px-4 min-h-screen">
       <ul className="pt-4">

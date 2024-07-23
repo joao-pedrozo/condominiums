@@ -1,4 +1,4 @@
-import CondominiumItem from "@/components/condominium-item";
+import CondominiumItem from "./condominium-item";
 import { Condominium } from "@/types";
 
 interface CondominiumListProps {

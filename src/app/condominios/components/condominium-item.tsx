@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import CondominiumDeleteDialog from "@/components/condominium-delete-dialog";
+import CondominiumDeleteDialog from "./condominium-delete-dialog";
 import type { Condominium } from "@/types";
 
 interface CondominiumItemProps extends React.HTMLAttributes<HTMLLIElement> {

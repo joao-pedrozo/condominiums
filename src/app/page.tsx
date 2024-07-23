@@ -2,9 +2,10 @@
 
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
-import OverviewCard from "../components/overview-card";
-import RecentCondominiums from "../components/recent-condominiums";
+import OverviewCard from "./components/overview-card";
+import RecentCondominiums from "./components/recent-condominiums";
 import { Condominium } from "@/types";
+import PageHeader from "./components/page-header";
 
 export default function Dashboard() {
   const { data: condominiums, isLoading } = useQuery({
@@ -21,10 +22,10 @@ export default function Dashboard() {
 
   return (
     <div>
-      <h2 className="font-bold text-3xl">Dashboard</h2>
-      <p className="text-lg mt-1">
-        Seja bem-vindo ao sistema de gestão de condomínios.
-      </p>
+      <PageHeader
+        title="Dashboard"
+        description="Veja informações gerais sobre os condomínios cadastrados."
+      />
       <div className="grid grid-cols-1 gap-8 mt-4">
         <div className="bg-card rounded-lg shadow-sm">
           <div className="flex items-center justify-between mb-4">
