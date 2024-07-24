@@ -30,7 +30,7 @@ const SideMenu = () => {
     <nav className="border border-t-0 flex flex-shrink-0 w-fit px-1 min-h-screen">
       <ul className="pt-4">
         <li>
-          <h1 className="px-3 font-bold text-blue-600 text-[29px] flex gap-2 items-center">
+          <h1 className="px-3 font-bold text-[29px] bg-gradient-to-r from-blue-600 to-indigo-600 text-transparent bg-clip-text">
             <Link href="/">Lobie</Link>
           </h1>
         </li>
