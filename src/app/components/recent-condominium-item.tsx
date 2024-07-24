@@ -22,7 +22,7 @@ export default function RecentCondominiumItem({
         </p>
       </div>
       <Link
-        href={`/condominios/${condominium.id}`}
+        href={`/condominios`}
         className="text-blue-600 font-bold text-sm"
         prefetch={false}
       >
