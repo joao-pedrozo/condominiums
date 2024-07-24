@@ -9,9 +9,10 @@ import { Suspense } from "react";
 
 function Form() {
   const searchParams = useSearchParams();
+  const id = searchParams.get("id");
 
   const mutationFn = (condominio: z.infer<typeof formSchema>) => {
-    return fetch("/api/condominios", {
+    return fetch(`/api/condominios/${id}`, {
       method: "PUT",
       body: JSON.stringify({
         ...condominio,

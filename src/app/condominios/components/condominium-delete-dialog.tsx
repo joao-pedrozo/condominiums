@@ -17,6 +17,16 @@ interface CondominiumDeleteDialogProps {
   condominiumId: number;
 }
 
+async function mutationFn(condominiumId: number) {
+  const response = await fetch(`/api/condominios/${condominiumId}`, {
+    method: "DELETE",
+  });
+
+  if (!response.ok) {
+    throw new Error("Erro ao deletar condomínio");
+  }
+}
+
 export default function CondominiumDeleteDialog({
   condominiumId,
 }: CondominiumDeleteDialogProps) {
@@ -24,13 +34,7 @@ export default function CondominiumDeleteDialog({
   const { toast } = useToast();
 
   const deleteMutation = useMutation({
-    mutationFn: async (id: number) => {
-      const response = await fetch(`/api/condominios`, {
-        method: "DELETE",
-        body: JSON.stringify({ id }),
-      });
-      return response.json();
-    },
+    mutationFn,
     onSuccess: async () => {
       await queryClient.invalidateQueries({
         queryKey: ["condominios"],
@@ -39,6 +43,14 @@ export default function CondominiumDeleteDialog({
       toast({
         title: "Condomínio deletado com sucesso!",
         description: "O condomínio foi deletado com sucesso.",
+      });
+    },
+    onError: (error) => {
+      toast({
+        title: "Erro ao deletar condomínio",
+        description:
+          "Ocorreu um erro ao deletar o condomínio. Se o problema persistir, entre em contato com o suporte.",
+        variant: "destructive",
       });
     },
   });
