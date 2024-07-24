@@ -1,6 +1,6 @@
-# Condominium Dashboard
-
-![Condominium Dashboard Logo](URL_OF_YOUR_LOGO_HERE)
+<div style="text-align: center;">
+  <img src="https://github.com/user-attachments/assets/5cc370c5-debb-4853-bc5b-4f96b18cc079" alt="Condominium Dashboard Logo" />
+</div>
 
 ## 🛠️ Tech Stack
 
