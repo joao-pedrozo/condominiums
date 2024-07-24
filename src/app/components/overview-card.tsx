@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
 interface OverviewCardProps {
   title: string;
@@ -6,14 +6,10 @@ interface OverviewCardProps {
   description: string;
 }
 
-export default function OverviewCard({
-  title,
-  value,
-  description,
-}: OverviewCardProps) {
+export default function OverviewCard({ title, value, description }: OverviewCardProps) {
   return (
-    <div className="bg-muted rounded-lg p-4">
-      <h3 className="text-4xl font-bold mb-2">{value}</h3>
+    <div className="rounded-lg bg-muted p-4">
+      <h3 className="mb-2 text-4xl font-bold">{value}</h3>
       <p className="text-muted-foreground">{description}</p>
     </div>
   );

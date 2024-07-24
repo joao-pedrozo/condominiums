@@ -8,10 +8,10 @@ import {
   AlertDialogContent,
   AlertDialogDescription,
   AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useToast } from "@/components/ui/use-toast";
+} from '@/components/ui/alert-dialog';
+import { Button } from '@/components/ui/button';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useToast } from '@/components/ui/use-toast';
 
 interface CondominiumDeleteDialogProps {
   condominiumId: number;
@@ -19,17 +19,15 @@ interface CondominiumDeleteDialogProps {
 
 async function mutationFn(condominiumId: number) {
   const response = await fetch(`/api/condominios/${condominiumId}`, {
-    method: "DELETE",
+    method: 'DELETE',
   });
 
   if (!response.ok) {
-    throw new Error("Erro ao deletar condomínio");
+    throw new Error('Erro ao deletar condomínio');
   }
 }
 
-export default function CondominiumDeleteDialog({
-  condominiumId,
-}: CondominiumDeleteDialogProps) {
+export default function CondominiumDeleteDialog({ condominiumId }: CondominiumDeleteDialogProps) {
   const queryClient = useQueryClient();
   const { toast } = useToast();
 
@@ -37,20 +35,20 @@ export default function CondominiumDeleteDialog({
     mutationFn,
     onSuccess: async () => {
       await queryClient.invalidateQueries({
-        queryKey: ["condominios"],
+        queryKey: ['condominios'],
       });
 
       toast({
-        title: "Condomínio deletado com sucesso!",
-        description: "O condomínio foi deletado com sucesso.",
+        title: 'Condomínio deletado com sucesso!',
+        description: 'O condomínio foi deletado com sucesso.',
       });
     },
     onError: (error) => {
       toast({
-        title: "Erro ao deletar condomínio",
+        title: 'Erro ao deletar condomínio',
         description:
-          "Ocorreu um erro ao deletar o condomínio. Se o problema persistir, entre em contato com o suporte.",
-        variant: "destructive",
+          'Ocorreu um erro ao deletar o condomínio. Se o problema persistir, entre em contato com o suporte.',
+        variant: 'destructive',
       });
     },
   });
@@ -67,12 +65,8 @@ export default function CondominiumDeleteDialog({
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>
-            Tem certeza que deseja excluir este condomínio?
-          </AlertDialogTitle>
-          <AlertDialogDescription>
-            Esta ação não pode ser desfeita.
-          </AlertDialogDescription>
+          <AlertDialogTitle>Tem certeza que deseja excluir este condomínio?</AlertDialogTitle>
+          <AlertDialogDescription>Esta ação não pode ser desfeita.</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancelar</AlertDialogCancel>

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
@@ -8,24 +8,20 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Calendar } from "@/components/ui/calendar";
+} from '@/components/ui/form';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Calendar } from '@/components/ui/calendar';
 
-import { Input } from "@/components/ui/input";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
-import { useToast } from "@/components/ui/use-toast";
-import { useRouter } from "next/navigation";
-import { cn } from "@/lib/utils";
-import { CalendarIcon } from "lucide-react";
-import { format } from "date-fns";
+import { Input } from '@/components/ui/input';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { useMutation } from '@tanstack/react-query';
+import { useToast } from '@/components/ui/use-toast';
+import { useRouter } from 'next/navigation';
+import { cn } from '@/lib/utils';
+import { CalendarIcon } from 'lucide-react';
+import { format } from 'date-fns';
 
 const formSchema = z.object({
   nome: z.string(),
@@ -59,7 +55,7 @@ export default function CondominioForm({
         description: `O condomínio foi ${buttonLabel.toLowerCase()} com sucesso.`,
       });
 
-      router.push("/condominios");
+      router.push('/condominios');
     },
     onError: (err) => {
       alert(`Ocorreu um erro ao ${buttonLabel.toLowerCase()} o condomínio.`);
@@ -82,10 +78,7 @@ export default function CondominioForm({
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="mt-2 grid grid-cols-2 gap-4"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="mt-2 grid grid-cols-2 gap-4">
         <FormField
           control={form.control}
           name="nome"
@@ -149,17 +142,13 @@ export default function CondominioForm({
                   <PopoverTrigger asChild>
                     <FormControl>
                       <Button
-                        variant={"outline"}
+                        variant={'outline'}
                         className={cn(
-                          "w-[240px] pl-3 text-left font-normal",
-                          !field.value && "text-muted-foreground"
+                          'w-[240px] pl-3 text-left font-normal',
+                          !field.value && 'text-muted-foreground',
                         )}
                       >
-                        {field.value ? (
-                          format(field.value, "PPP")
-                        ) : (
-                          <span>Pick a date</span>
-                        )}
+                        {field.value ? format(field.value, 'PPP') : <span>Pick a date</span>}
                         <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                       </Button>
                     </FormControl>
@@ -169,9 +158,7 @@ export default function CondominioForm({
                       mode="single"
                       selected={field.value}
                       onSelect={field.onChange}
-                      disabled={(date) =>
-                        date > new Date() || date < new Date("1900-01-01")
-                      }
+                      disabled={(date) => date > new Date() || date < new Date('1900-01-01')}
                     />
                   </PopoverContent>
                 </Popover>
@@ -182,7 +169,7 @@ export default function CondominioForm({
         )}
         <div className="col-span-2">
           <Button
-            className="bg-blue-700 w-full text-white hover:bg-blue-800 active:bg-blue-900 hover:text-white"
+            className="w-full bg-blue-700 text-white hover:bg-blue-800 hover:text-white active:bg-blue-900"
             type="submit"
           >
             {buttonLabel}

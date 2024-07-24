@@ -1,17 +1,17 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import Link from "next/link";
-import CondominiumList from "./components/condominium-list";
-import { PlusIcon } from "lucide-react";
-import PageHeader from "../components/page-header";
+'use client';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import Link from 'next/link';
+import CondominiumList from './components/condominium-list';
+import { PlusIcon } from 'lucide-react';
+import PageHeader from '../components/page-header';
 
 export default function CondominiumsPage() {
   const { data: condominiums, isLoading } = useQuery({
-    queryKey: ["condominios"],
+    queryKey: ['condominios'],
     queryFn: async () => {
-      const response = await fetch("/api/condominios");
+      const response = await fetch('/api/condominios');
       return response.json();
     },
   });
@@ -22,7 +22,7 @@ export default function CondominiumsPage() {
         title="Gestão de Condomínios"
         description="Aqui você pode gerenciar os condomínios cadastrados."
       />
-      <div className="flex justify-between my-4">
+      <div className="my-4 flex justify-between">
         <div>
           <Input placeholder="Procure por id" />
         </div>

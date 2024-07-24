@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import CondominiumForm from "../components/condominium-form";
-import { z } from "zod";
-import PageHeader from "@/app/components/page-header";
+import Link from 'next/link';
+import CondominiumForm from '../components/condominium-form';
+import { z } from 'zod';
+import PageHeader from '@/app/components/page-header';
 
 const formSchema = z.object({
   nome: z.string(),
@@ -15,19 +15,19 @@ const formSchema = z.object({
 
 export default function AddCondominiumPage() {
   const defaultValues = {
-    nome: "",
-    endereco: "",
-    cnpj: "",
-    quantidadeUnidades: "0",
+    nome: '',
+    endereco: '',
+    cnpj: '',
+    quantidadeUnidades: '0',
     inicioAdministracao: new Date(),
   };
 
   const mutationFn = (condominio: z.infer<typeof formSchema>) => {
-    return fetch("/api/condominios", {
-      method: "POST",
+    return fetch('/api/condominios', {
+      method: 'POST',
       body: JSON.stringify(condominio),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
   };

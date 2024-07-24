@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { useQuery } from "@tanstack/react-query";
-import Link from "next/link";
-import OverviewCard from "./components/overview-card";
-import RecentCondominiums from "./components/recent-condominiums";
-import { Condominium } from "@/types";
-import PageHeader from "./components/page-header";
+import { useQuery } from '@tanstack/react-query';
+import Link from 'next/link';
+import OverviewCard from './components/overview-card';
+import RecentCondominiums from './components/recent-condominiums';
+import { Condominium } from '@/types';
+import PageHeader from './components/page-header';
 
 export default function Dashboard() {
   const { data: condominiums, isLoading } = useQuery({
-    queryKey: ["condominios"],
+    queryKey: ['condominios'],
     queryFn: async () => {
-      const response = await fetch("/api/condominios");
+      const response = await fetch('/api/condominios');
       return response.json();
     },
   });
@@ -26,15 +26,11 @@ export default function Dashboard() {
         title="Dashboard"
         description="Veja informações gerais sobre os condomínios cadastrados."
       />
-      <div className="grid grid-cols-1 gap-8 mt-4">
-        <div className="bg-card rounded-lg shadow-sm">
-          <div className="flex items-center justify-between mb-4">
+      <div className="mt-4 grid grid-cols-1 gap-8">
+        <div className="rounded-lg bg-card shadow-sm">
+          <div className="mb-4 flex items-center justify-between">
             <h3 className="text-xl font-bold">Overview</h3>
-            <Link
-              href="/condominios"
-              className="text-blue-600 font-bold text-sm"
-              prefetch={false}
-            >
+            <Link href="/condominios" className="text-sm font-bold text-blue-600" prefetch={false}>
               Ver todos
             </Link>
           </div>

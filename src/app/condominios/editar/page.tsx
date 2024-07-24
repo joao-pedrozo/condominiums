@@ -1,37 +1,35 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import CondominioForm from "../components/condominium-form";
-import { z } from "zod";
-import { useSearchParams } from "next/navigation";
-import PageHeader from "@/app/components/page-header";
-import { Suspense } from "react";
+import Link from 'next/link';
+import CondominioForm from '../components/condominium-form';
+import { z } from 'zod';
+import { useSearchParams } from 'next/navigation';
+import PageHeader from '@/app/components/page-header';
+import { Suspense } from 'react';
 
 function Form() {
   const searchParams = useSearchParams();
-  const id = searchParams.get("id");
+  const id = searchParams.get('id');
 
   const mutationFn = (condominio: z.infer<typeof formSchema>) => {
     return fetch(`/api/condominios/${id}`, {
-      method: "PUT",
+      method: 'PUT',
       body: JSON.stringify({
         ...condominio,
-        id: searchParams.get("id"),
+        id: searchParams.get('id'),
       }),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
   };
 
   const defaultValues = {
-    nome: searchParams.get("nome") ?? "",
-    endereco: searchParams.get("endereco") ?? "",
-    cnpj: searchParams.get("cnpj") ?? "",
-    quantidadeUnidades: searchParams.get("quantidadeUnidades") ?? "",
-    inicioAdministracao: new Date(
-      searchParams.get("inicioAdministracao") ?? ""
-    ),
+    nome: searchParams.get('nome') ?? '',
+    endereco: searchParams.get('endereco') ?? '',
+    cnpj: searchParams.get('cnpj') ?? '',
+    quantidadeUnidades: searchParams.get('quantidadeUnidades') ?? '',
+    inicioAdministracao: new Date(searchParams.get('inicioAdministracao') ?? ''),
   };
 
   return (
