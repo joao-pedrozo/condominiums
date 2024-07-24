@@ -15,7 +15,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* TODO: Create template */}
       <body className={`${inter.className} flex`}>
         <TanstackProvider>
           <SideMenu />
