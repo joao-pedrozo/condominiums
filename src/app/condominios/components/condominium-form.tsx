@@ -181,7 +181,10 @@ export default function CondominioForm({
           />
         )}
         <div className="col-span-2">
-          <Button className="w-full" type="submit">
+          <Button
+            className="bg-blue-700 w-full text-white hover:bg-blue-800 active:bg-blue-900 hover:text-white"
+            type="submit"
+          >
             {buttonLabel}
           </Button>
         </div>

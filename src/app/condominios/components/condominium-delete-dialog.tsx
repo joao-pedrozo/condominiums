@@ -79,6 +79,7 @@ export default function CondominiumDeleteDialog({
           <AlertDialogAction
             disabled={deleteMutation.isPending}
             onClick={() => deleteMutation.mutate(condominiumId)}
+            className="bg-blue-700 hover:bg-blue-800"
           >
             Continuar
           </AlertDialogAction>
