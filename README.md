@@ -1,6 +1,6 @@
-<h1 align="center">
+<h2 align="center">
 🏘️ Condominiums Dashboard
-</h1>
+</h2>
 
 <p align="center">
   <img width="600" height="338" src="https://github.com/user-attachments/assets/5cc370c5-debb-4853-bc5b-4f96b18cc079" alt="Condominium Dashboard Logo" />
