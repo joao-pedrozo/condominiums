@@ -9,7 +9,7 @@ export default function CondominiumList({
   condominiums,
 }: CondominiumListProps) {
   return (
-    <ul>
+    <ul className="flex flex-col gap-3">
       {condominiums.map((condominium) => (
         <CondominiumItem key={condominium.id} condominium={condominium} />
       ))}
