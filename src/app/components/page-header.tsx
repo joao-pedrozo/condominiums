@@ -1,3 +1,4 @@
+import { MoveLeft } from "lucide-react";
 import Link from "next/link";
 
 interface PageHeaderProps {
@@ -16,12 +17,13 @@ export default function PageHeader({
       {displayBackButton && (
         <Link
           href="/condominios"
-          className="text-blue-500 font-semibold mb-2 block"
+          className="flex gap-2 text-blue-600 font-semibold mb-1"
         >
-          {"<--"} Voltar
+          <MoveLeft />
+          <span>Voltar</span>
         </Link>
       )}
-      <h2 className="font-bold text-3xl">{title}</h2>
+      <h2 className="font-bold text-3xl text-blue-600">{title}</h2>
       <p className="text-lg mt-1">{description}</p>
     </header>
   );

@@ -1,33 +1,38 @@
 import Link from "next/link";
-import Image from "next/image";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 const SideMenu = () => {
+  const pathname = usePathname();
+
   return (
-    <div className="border border-t-0 flex flex-shrink-0 w-fit px-4 min-h-screen">
+    <nav className="border border-t-0 flex flex-shrink-0 w-fit px-1 min-h-screen">
       <ul className="pt-4">
         <li>
-          <h1 className="font-bold text-2xl flex gap-2 items-center">
-            <Image
-              src="/logotipo.png"
-              width={120}
-              height={120}
-              alt="Logo Lobie"
-            />
+          <h1 className="px-3 font-bold text-blue-600 text-[29px] flex gap-2 items-center">
+            <Link href="/">Lobie</Link>
           </h1>
         </li>
-        <li className="pt-1 pb-3 border-b border-gray-700">
-          <Link href="/" className="">
-            Dashboard
-          </Link>
+        <li
+          className={`text-lg font-semibold rounded-md py-2 px-3 hover:bg-blue-600 hover:text-blue-600 hover:bg-opacity-10 ${
+            pathname === "/" ? "text-blue-600 bg-blue-600 bg-opacity-10" : ""
+          }`}
+        >
+          <Link href="/">Dashboard</Link>
         </li>
-        <li className="py-3 border-b border-gray-700">
+        <li
+          className={`mt-[4px] text-lg font-semibold rounded-md py-2 px-3 hover:bg-blue-600 hover:text-blue-600 hover:bg-opacity-10 ${
+            pathname === "/condominios"
+              ? "text-blue-600 bg-blue-600 bg-opacity-10"
+              : ""
+          }`}
+        >
           <Link href="/condominios" className="">
             Gestão de Condomínios
           </Link>
         </li>
       </ul>
-    </div>
+    </nav>
   );
 };
 
