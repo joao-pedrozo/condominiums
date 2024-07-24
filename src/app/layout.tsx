@@ -1,7 +1,7 @@
 "use client";
 
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../styles/globals.css";
 import SideMenu from "@/components/side-menu";
 import TanstackProvider from "@/providers/TanstackProvider";
 import ToastProvider from "@/providers/ToastProvider";
