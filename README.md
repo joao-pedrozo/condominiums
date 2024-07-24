@@ -1,6 +1,10 @@
-<div style="text-align: center;">
-  <img src="https://github.com/user-attachments/assets/5cc370c5-debb-4853-bc5b-4f96b18cc079" alt="Condominium Dashboard Logo" />
-</div>
+<h1 align="center">
+🏘️ Condominiums Dashboard
+</h1>
+
+<p align="center">
+  <img width="400" height="230" src="https://github.com/user-attachments/assets/5cc370c5-debb-4853-bc5b-4f96b18cc079" alt="Condominium Dashboard Logo" />
+</p>
 
 ## 🛠️ Tech Stack
 
