@@ -16,12 +16,11 @@ import { Input } from '@/components/ui/input';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { useMutation } from '@tanstack/react-query';
-import { useToast } from '@/components/ui/use-toast';
-import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { CalendarIcon } from 'lucide-react';
 import { format } from 'date-fns';
+import { useMutateCondominium } from '@/hooks/useCondomininiums';
+import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
   nome: z.string(),
@@ -44,22 +43,15 @@ export default function CondominioForm({
   successMessage,
   buttonLabel,
 }: CondominioFormProps) {
-  const { toast } = useToast();
-  const router = useRouter();
-
-  const { mutate, isPending } = useMutation({
+  const { mutate, isPending } = useMutateCondominium({
     mutationFn,
-    onSuccess: () => {
-      toast({
-        title: successMessage,
-        description: `O condomínio foi ${buttonLabel.toLowerCase()} com sucesso.`,
-      });
-
-      router.push('/condominios');
+    onSuccessMessage: {
+      title: successMessage,
+      description: successMessage,
     },
-    onError: (err) => {
-      alert(`Ocorreu um erro ao ${buttonLabel.toLowerCase()} o condomínio.`);
-      console.error(err);
+    onErrorMessage: {
+      title: `Erro ao ${buttonLabel.toLowerCase()} condomínio.`,
+      description: 'Se o problema persistir, contate o Suporte.',
     },
   });
 

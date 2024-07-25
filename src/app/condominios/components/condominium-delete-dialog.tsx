@@ -10,8 +10,7 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useToast } from '@/components/ui/use-toast';
+import { useMutateCondominium } from '@/hooks/useCondomininiums';
 
 interface CondominiumDeleteDialogProps {
   condominiumId: number;
@@ -28,28 +27,16 @@ async function mutationFn(condominiumId: number) {
 }
 
 export default function CondominiumDeleteDialog({ condominiumId }: CondominiumDeleteDialogProps) {
-  const queryClient = useQueryClient();
-  const { toast } = useToast();
-
-  const deleteMutation = useMutation({
+  const { mutate, isPending } = useMutateCondominium({
     mutationFn,
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({
-        queryKey: ['condominios'],
-      });
-
-      toast({
-        title: 'Condomínio deletado com sucesso!',
-        description: 'O condomínio foi deletado com sucesso.',
-      });
+    onSuccessMessage: {
+      title: 'Condominío deletado com sucesso!',
+      description: 'O condomínio foi deletado com sucesso.',
     },
-    onError: (error) => {
-      toast({
-        title: 'Erro ao deletar condomínio',
-        description:
-          'Ocorreu um erro ao deletar o condomínio. Se o problema persistir, entre em contato com o suporte.',
-        variant: 'destructive',
-      });
+    onErrorMessage: {
+      title: 'Erro ao deletar o condomínio.',
+      description:
+        'Ocorreu um erro ao deletar o condomínio. Se o problema persistir, contate o suporte.',
     },
   });
 
@@ -71,8 +58,8 @@ export default function CondominiumDeleteDialog({ condominiumId }: CondominiumDe
         <AlertDialogFooter>
           <AlertDialogCancel>Cancelar</AlertDialogCancel>
           <AlertDialogAction
-            disabled={deleteMutation.isPending}
-            onClick={() => deleteMutation.mutate(condominiumId)}
+            disabled={isPending}
+            onClick={() => mutate(condominiumId)}
             className="bg-blue-700 hover:bg-blue-800"
           >
             Continuar

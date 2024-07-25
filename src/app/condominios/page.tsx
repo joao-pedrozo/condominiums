@@ -1,20 +1,14 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
 import Link from 'next/link';
 import CondominiumList from './components/condominium-list';
 import { PlusIcon } from 'lucide-react';
 import PageHeader from '../components/page-header';
+import { useGetCondominiums } from '@/hooks/useCondomininiums';
 
 export default function CondominiumsPage() {
-  const { data: condominiums, isLoading } = useQuery({
-    queryKey: ['condominios'],
-    queryFn: async () => {
-      const response = await fetch('/api/condominios');
-      return response.json();
-    },
-  });
+  const { data: condominiums, isLoading } = useGetCondominiums();
 
   return (
     <main>

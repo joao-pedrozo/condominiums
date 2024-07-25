@@ -6,15 +6,10 @@ import OverviewCard from './components/overview-card';
 import RecentCondominiums from './components/recent-condominiums';
 import { Condominium } from '@/types';
 import PageHeader from './components/page-header';
+import { useGetCondominiums } from '@/hooks/useCondomininiums';
 
 export default function Dashboard() {
-  const { data: condominiums, isLoading } = useQuery({
-    queryKey: ['condominios'],
-    queryFn: async () => {
-      const response = await fetch('/api/condominios');
-      return response.json();
-    },
-  });
+  const { data: condominiums, isLoading } = useGetCondominiums();
 
   const totalUnits = (condominiums: Condominium[]) => {
     return condominiums.reduce((acc, curr) => acc + curr.quantidadeUnidades, 0);
