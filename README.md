@@ -59,6 +59,10 @@ $ npm install
 
 $ yarn
 
+# Add the API_URL to the .env.local file
+
+$ cp .env.sample .env.local
+
 # Start the development server
 
 $ yarn dev
