@@ -18,7 +18,7 @@ export default function RootLayout({
       <body className={`${inter.className} flex`}>
         <TanstackProvider>
           <SideMenu />
-          <div className="mt-5 w-full max-w-[720px] pl-5">{children}</div>
+          <div className="mt-5 w-full max-w-[720px] px-5">{children}</div>
           <ToastProvider />
         </TanstackProvider>
       </body>

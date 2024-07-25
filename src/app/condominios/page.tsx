@@ -17,8 +17,8 @@ export default function CondominiumsPage() {
         description="Aqui você pode gerenciar os condomínios cadastrados."
       />
       <div className="my-4 flex justify-between">
-        <div>
-          <Input placeholder="Procure por id" />
+        <div className="opacity-50">
+          <Input disabled placeholder="Procure por id" />
         </div>
         <Link href="/condominios/adicionar">
           <Button className="bg-blue-600 text-white hover:bg-blue-700 hover:text-white">
