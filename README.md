@@ -2,10 +2,6 @@
 🏘️ Condominiums Dashboard
 </h1>
 
-<p>
-  <img width="600" height="338" src="https://github.com/user-attachments/assets/5cc370c5-debb-4853-bc5b-4f96b18cc079" alt="Condominium Dashboard Logo" />
-</p>
-
 You can click [here](https://condominiums.vercel.app/) to check the live version!
 
 ## 🛠️ Tech Stack
