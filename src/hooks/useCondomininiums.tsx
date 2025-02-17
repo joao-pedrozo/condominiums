@@ -8,6 +8,7 @@ import {
 import { useToast } from '@/components/ui/use-toast';
 import { Condominium } from '@/types';
 import { useRouter } from 'next/navigation';
+import mock from "./mock.json"
 
 interface UseMutateCondominiumProps extends UseMutationOptions<any, Error, any, unknown> {
   mutationFn: MutationFunction<any, any> | undefined;
@@ -30,12 +31,18 @@ export const useGetCondominiums = () => {
       const response = await fetch('/api/condominios');
 
       if (!response.ok) {
+        if (process.env.NEXT_PUBLIC_RETURN_MOCK === "TRUE") {
+          return mock;
+        }
+
         toast({
           title: 'Erro ao buscar condomínios',
           description:
             'Ocorreu um erro ao buscar os condomínios. Se o problema persistir, entre em contato com o suporte.',
           variant: 'destructive',
         });
+
+        return;
       }
 
       return response.json();
