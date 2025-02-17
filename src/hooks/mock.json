@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "nome": "Condomínio Blaze",
+    "endereco": "Rua dos Blaze",
+    "cnpj": "12345678901234",
+    "quantidadeUnidades": 50,
+    "inicioAdministracao": "2021-01-01"
+  },
+  {
+    "id": 2,
+    "nome": "Condomínio Blaze 2",
+    "endereco": "Rua dos Blaze 2",
+    "cnpj": "12345678901235",
+    "quantidadeUnidades": 100,
+    "inicioAdministracao": "2021-01-01"
+  },
+  {
+    "id": 3,
+    "nome": "Condomínio Blaze 3",
+    "endereco": "Rua dos Blaze 3",
+    "cnpj": "12345678901236",
+    "quantidadeUnidades": 150,
+    "inicioAdministracao": "2021-01-01"
+  }
+]
