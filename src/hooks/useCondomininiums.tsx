@@ -8,7 +8,7 @@ import {
 import { useToast } from '@/components/ui/use-toast';
 import { Condominium } from '@/types';
 import { useRouter } from 'next/navigation';
-import mock from './mock.json'
+import mock from './mock.json';
 
 interface UseMutateCondominiumProps extends UseMutationOptions<any, Error, any, unknown> {
   mutationFn: MutationFunction<any, any> | undefined;
