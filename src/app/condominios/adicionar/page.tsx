@@ -22,14 +22,20 @@ export default function AddCondominiumPage() {
     inicioAdministracao: new Date(),
   };
 
-  const mutationFn = (condominio: z.infer<typeof formSchema>) => {
-    return fetch('/api/condominios', {
+  const mutationFn = async (condominio: z.infer<typeof formSchema>) => {
+    const response = await fetch('/api/condominios', {
       method: 'POST',
       body: JSON.stringify(condominio),
       headers: {
         'Content-Type': 'application/json',
       },
     });
+
+    if (!response.ok) {
+      throw new Error('Erro ao adicionar condomínio');
+    }
+
+    return response.json();
   };
 
   return (
