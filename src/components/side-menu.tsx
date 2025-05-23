@@ -32,7 +32,7 @@ const SideMenu = () => {
       <ul className="pt-4">
         <li>
           <h1 className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text px-3 text-[29px] font-bold text-transparent">
-            <Link href="/">Lobie</Link>
+            <Link href="/">Blaze</Link>
           </h1>
         </li>
         {menuItems.map(({ href, label, Icon }) => (
