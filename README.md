@@ -2,7 +2,10 @@
 🏘️ Condominiums Dashboard
 </h1>
 
+
 You can click [here](https://condominiums.vercel.app/) to check the live version!
+
+![Dashboard Thumbnail](https://github.com/user-attachments/assets/3dfb5f8d-9c25-4b2c-b11c-ff58a6d85729)
 
 ## 🛠️ Tech Stack
 
