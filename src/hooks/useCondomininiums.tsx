@@ -38,7 +38,7 @@ export const useGetCondominiums = () => {
         toast({
           title: 'Erro ao buscar condomínios',
           description:
-            'Ocorreu um erro ao buscar os condomínios. Se o problema persistir, entre em contato com o suporte.',
+            'Ocorreu um erro ao buscar os condomínios.',
           variant: 'destructive',
         });
 
