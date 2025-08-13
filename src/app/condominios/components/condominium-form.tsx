@@ -51,7 +51,6 @@ export default function CondominioForm({
     },
     onErrorMessage: {
       title: `Erro ao ${buttonLabel.toLowerCase()} condomínio.`,
-      description: 'Se o problema persistir, contate o suporte.',
     },
   });
 
