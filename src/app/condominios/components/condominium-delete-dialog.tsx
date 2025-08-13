@@ -36,7 +36,7 @@ export default function CondominiumDeleteDialog({ condominiumId }: CondominiumDe
     onErrorMessage: {
       title: 'Erro ao deletar o condomínio.',
       description:
-        'Ocorreu um erro ao deletar o condomínio. Se o problema persistir, contate o suporte.',
+        'Ocorreu um erro ao deletar o condomínio.',
     },
   });
 
